@@ -39,12 +39,14 @@ select int_id_vehiculo, modelo from tbl_vehiculo
 
 insert into tbl_marca values (1, '2000')
 
-select v.int_id_vehiculo, v.modelo,year(v.fecha), v.precio, m.nombre
+select v.int_id_vehiculo as id_vehiculo, v.modelo as modelo,year(v.fecha) as fecha, v.precio as precio, m.nombre as marca
 from tbl_vehiculo v inner join tbl_marca m
 on m.int_id_vehiculo = v.int_id_vehiculo
 order by m.nombre DESC
 
-select v.int_id_vehiculo, v.modelo,year(v.fecha), v.precio, m.nombre
+select v.int_id_vehiculo as id_vehiculo, v.modelo,year(v.fecha) as anio, v.precio as precio, m.nombre as marca
 from tbl_vehiculo v inner join tbl_marca m
 on m.int_id_vehiculo = v.int_id_vehiculo
 where m.nombre = 'BMW'
+
+
