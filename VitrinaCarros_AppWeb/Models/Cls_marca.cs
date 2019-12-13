@@ -41,7 +41,7 @@ namespace VitrinaCarros_AppWeb.Models
                     throw e;
                 }
 
-                string query = "insert into tbl_marca values ("+IdVehiculo+", '"+Nombre+"')";
+                string query = "insert into tbl_marca values (" + IdVehiculo + ", ' " + Nombre + "')";
 
                 int fila = db.operaracion(query);
 

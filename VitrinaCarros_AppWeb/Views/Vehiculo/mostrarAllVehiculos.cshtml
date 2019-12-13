@@ -11,16 +11,7 @@
 
         <h2>Datos Guardados</h2>
 
-        <form method="post" action="/Vehiculo/ConsultarVehiculosXMarca" class="form-inline">
-            <div class="form-group">
-                <label for="Modelo">Buscar Marca de Vehiculo : </label>
-                <input type="text" class="form-control" id="Modelo" name="txtBusMarca" placeholder="Ingrese una marca a buscar">
-                <input type="submit" name="btnBuscarMarca" value="Buscar Marca Vehiculo" class="btn btn-success" />
-            </div>
-        </form>
-
-        <br />
-
+    
         <center>
             <div class="row">
 
@@ -29,15 +20,16 @@
                     <div class="col-md-4">
                         <div class="panel panel-primary">
                             <div class="panel-body">
-                                <p>Modelo: @vehiculo.getModelo()</p>
+                                <p>Modelo: @vehiculo.getModelo()</p>                             
                                 <p>Año: @vehiculo.getAnio()</p>
                                 <p>Precio: @vehiculo.getPrecio()</p>
 
                                 <form action="/Vehiculo/MostrarVehiculos" method="post">
                                     <input type="hidden" name="id_vehiculo" value="@vehiculo.getIdVehiculo()" />
-                                    <input type="hidden" name="nombre" value=">@vehiculo.getModelo()" />
-                                    <input type="hidden" name="descripcion" value="@vehiculo.getAnio()" />
-                                    <input type="hidden" name="idEquipo" value="@vehiculo.getPrecio()" />
+                                    <input type="hidden" name="modelo" value=">@vehiculo.getModelo()" />
+                                    <input type="hidden" name="anio" value="@vehiculo.getAnio()" />
+                                    <input type="hidden" name="precio" value="@vehiculo.getPrecio()" />
+                                    
                                     <button type="submit" class="btn btn-info">
                                         <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
                                     </button>

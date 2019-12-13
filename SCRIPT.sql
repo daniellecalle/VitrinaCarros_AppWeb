@@ -1,31 +1,50 @@
-CREATE DATABASE BDVitrinaCarros
-GO
-USE VITRINA_CARROS
-GO
+create database BDVitrinaCarros
 
-CREATE TABLE TBL_VEHICULO
+go 
+
+use BDVitrinaCarros
+
+go
+
+create table tbl_vehiculo
 (
-	ID_VEHICULO SMALLINT PRIMARY KEY IDENTITY(1, 1) NOT NULL, 
-	MODELO VARCHAR(30) NOT NULL, 
-	ANIO INT,
-	PRECIO FLOAT,  
-	IMAGEN varbinary(MAX)
+	int_id_vehiculo int primary key identity(1,1),
+	modelo varchar(30) not null, 
+	fecha date,
+	precio float
 )
-GO
 
-CREATE TABLE TBL_MARCA
+go 
+
+create table tbl_marca
 (
-	ID_VEHICULO SMALLINT, 
-	NOMBRE VARCHAR(30) NOT NULL, 
-	PRIMARY KEY(ID_VEHICULO, NOMBRE)
+	int_id_vehiculo int, 
+	nombre varchar(30) not null,
+	primary key(int_id_vehiculo, nombre)
 )
-GO
 
-ALTER TABLE TBL_MARCA
-ADD FOREIGN KEY(ID_VEHICULO) REFERENCES TBL_VEHICULO(ID_VEHICULO)
+go
+
+alter table tbl_marca
+add foreign key(int_id_vehiculo) references tbl_vehiculo(int_id_vehiculo)
+
+select * from tbl_marca
+
+insert into tbl_vehiculo values ('2000', '02/10/2019', 1000000)
+
+select  int_id_vehiculo, modelo, year(fecha) as año, precio from tbl_vehiculo
 
 
-INSERT INTO TBL_VEHICULO (MODELO, ANIO, PRECIO, IMAGEN)  
-VALUES ('2013', 2019, 4000, NULL)
+select int_id_vehiculo, modelo from tbl_vehiculo 
 
-SELECT * FROM TBL_VEHICULO
+insert into tbl_marca values (1, '2000')
+
+select v.int_id_vehiculo, v.modelo,year(v.fecha), v.precio, m.nombre
+from tbl_vehiculo v inner join tbl_marca m
+on m.int_id_vehiculo = v.int_id_vehiculo
+order by m.nombre DESC
+
+select v.int_id_vehiculo, v.modelo,year(v.fecha), v.precio, m.nombre
+from tbl_vehiculo v inner join tbl_marca m
+on m.int_id_vehiculo = v.int_id_vehiculo
+where m.nombre = 'BMW'

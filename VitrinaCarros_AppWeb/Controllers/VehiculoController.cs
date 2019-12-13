@@ -62,6 +62,29 @@ namespace VitrinaCarros_AppWeb.Controllers
             return View();
         }
 
+        [HttpGet]
+        public ActionResult ConsultarVehiculosXMarca()
+        {
+            string marca = Convert.ToString(Request["txtBusMarca"]);
+            List<Cls_vehiculo> objListaVehiculosXMarca = objv.listaBsVehiculosXMarca(marca);
+            ViewData["listaVehiculosXMarca"] = objListaVehiculosXMarca;
+            return View("mostrarVehiculosXMarca");
+        }
+
+        [HttpPost]
+        public ActionResult MostrarVehiculos()
+        {
+            //Septiamos los datos nuestra propiedades del objeto (vehiculo)
+            objv.setIdVehiculo(Convert.ToInt32(Request["id_vehiculo"]));
+            objv.setModelo(Convert.ToString(Request["modelo"]));
+            objv.setAnio(Convert.ToInt32(Request["anio"]));
+            objv.setPrecio(Convert.ToDouble(Request["precio"]));
+
+            ViewData["ModelVehiculo"] = objv;
+
+            return View("form_mostrarVehiculo");
+        }
+
         public ActionResult formRegistroMarca() 
         {
             List<Cls_vehiculo> objListaVehiculosPorModelo = objv.ListadoVehiculosXmodelo();
@@ -69,6 +92,7 @@ namespace VitrinaCarros_AppWeb.Controllers
             return View();
         }
 
+      
         [HttpPost]
         public ActionResult crearMarcaVehiculo()
         {

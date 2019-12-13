@@ -297,6 +297,8 @@
     <Content Include="Views\Vehiculo\error.cshtml" />
     <Content Include="Views\Vehiculo\MostrarMarcas.cshtml" />
     <Content Include="Views\Vehiculo\Error_Msg1.cshtml" />
+    <Content Include="Views\Vehiculo\mostrarVehiculosXMarca.cshtml" />
+    <Content Include="Views\Vehiculo\form_mostrarVehiculo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
